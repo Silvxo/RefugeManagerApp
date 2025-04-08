@@ -6,7 +6,7 @@ export default function ADMOptions() {
   return (
     <View style={styles.container}>
 
-      <TouchableOpacity style={styles.button} onPress={() => router.push('/login')}>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/guestRegistration')}>
         <Text style={styles.buttonText}>Register new guest</Text>
       </TouchableOpacity>
 

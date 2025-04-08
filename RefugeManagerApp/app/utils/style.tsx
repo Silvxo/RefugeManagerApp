@@ -14,6 +14,22 @@ export const styles = StyleSheet.create({
       marginBottom: 40,
       fontWeight: 'bold',
     },
+    input: {
+      backgroundColor: '#2D2D44',
+      color: '#fff',
+      width: '100%',
+      padding: 12,
+      marginBottom: 16,
+      borderRadius: 8,
+    },
+    devComment: {
+      color: '#fff',
+      fontSize: 14,
+      marginBottom: 20,
+      textAlign: 'left',
+      padding: 10,
+      fontStyle: 'italic',
+    },
     button: {
       backgroundColor: '#3b82f6',
       paddingVertical: 15,

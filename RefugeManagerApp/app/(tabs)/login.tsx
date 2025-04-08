@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { useState } from 'react';
 import { router } from 'expo-router';
-
+import { styles } from "../utils/style";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -45,39 +45,3 @@ export default function LoginScreen() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1E1E2E',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 24,
-  },
-  title: {
-    fontSize: 24,
-    color: '#fff',
-    marginBottom: 32,
-    fontWeight: 'bold',
-  },
-  input: {
-    backgroundColor: '#2D2D44',
-    color: '#fff',
-    width: '100%',
-    padding: 12,
-    marginBottom: 16,
-    borderRadius: 8,
-  },
-  button: {
-    backgroundColor: '#3B82F6',
-    paddingVertical: 14,
-    width: '100%',
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-});
