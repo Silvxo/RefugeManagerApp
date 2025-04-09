@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ScrollView, TextInput, StyleSheet, View, Button, Alert } from 'react-native';
+import { styles } from '../utils/style'; 
 
 export default function FormularioAbrigo() {
     const [form, setForm] = useState({
@@ -29,13 +30,53 @@ export default function FormularioAbrigo() {
         setForm(prev => ({ ...prev, [field]: value }));
     };
 
-    const handleSubmit = () => {
-        Alert.alert("Dados salvos", JSON.stringify(form, null, 2));
-        // Aqui você pode enviar os dados para uma API, salvar localmente, etc.
+    const handleSubmit = async () => {
+    const payload = {
+        nome: form.nomeCompleto,
+        idade: Number(form.idade),
+        sexo: form.sexo,
+        dependentes: form.dependentes,
+        cpf: form.cpf,
+        nacionalidade: form.nacionalidade,
+        nomeDaMae: form.nomeMae,
+        estadoCivil: form.estadoCivil,
+        motivoSituacaoDesabrigo: form.motivoDesabrigo,
+        contato: form.contatoEmergencia,
+        restricaoAlimentar: form.restricaoAlimentar,
+        medicamentoContinuo: form.usoMedicamento,
+        necessidadeEspecial: form.necessidadeEspecial,
+        condicaoEspecial: form.condicaoEspecial,
+        dataEntrada: new Date(form.dataEntrada),
+        localizacao: form.localizacaoAbrigo,
+        tempoEmSituacaoDeRua: form.tempoRua,
+        recebeBeneficioGOV: form.recebeBeneficio,
+        itensPessoais: form.itensPessoais,
+        responsavel: form.responsavel
     };
 
+    try {
+        const response = await fetch('http://<IP_DA_API>:3000/api/desabrigados', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+            Alert.alert("Sucesso", "Desabrigado cadastrado com sucesso!");
+            setForm({ ...form, nomeCompleto: '' }); // exemplo de reset parcial
+        } else {
+            const errorData = await response.json();
+            Alert.alert("Erro", errorData.message || "Erro ao cadastrar");
+        }
+    } catch (error) {
+        Alert.alert("Erro de conexão", "Verifique sua conexão com a internet e tente novamente.");
+    }
+};
+
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
             <TextInput placeholder="Nome Completo" style={styles.input} placeholderTextColor="#aaa" onChangeText={text => handleChange('nomeCompleto', text)} value={form.nomeCompleto} />
             <TextInput placeholder="Idade" style={styles.input} placeholderTextColor="#aaa" keyboardType="numeric" onChangeText={text => handleChange('idade', text)} value={form.idade} />
             <TextInput placeholder="Sexo" style={styles.input} placeholderTextColor="#aaa" onChangeText={text => handleChange('sexo', text)} value={form.sexo} />
@@ -64,19 +105,5 @@ export default function FormularioAbrigo() {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        padding: 16,
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        padding: 12,
-        borderRadius: 8,
-        marginBottom: 12,
-        color: '#000',
-    },
-    buttonContainer: {
-        marginTop: 20,
-    }
-});
+
+

@@ -8,6 +8,13 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
       paddingHorizontal: 20,
     },
+    scrollContainer: {
+      backgroundColor: '#1e1e2e',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingHorizontal: 20,
+      paddingVertical: 20,
+    },
     title: {
       fontSize: 28,
       color: '#fff',
@@ -29,6 +36,10 @@ export const styles = StyleSheet.create({
       textAlign: 'left',
       padding: 10,
       fontStyle: 'italic',
+    },
+    buttonContainer: {
+      marginTop: 20,
+      marginBottom: 20,
     },
     button: {
       backgroundColor: '#3b82f6',

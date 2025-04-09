@@ -12,9 +12,9 @@ export default function HomeScreen() {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
+      
+
       <Text style={styles.devComment}> V 1.0 </Text>
-
-
 
     </View>
   );

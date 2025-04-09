@@ -6,6 +6,7 @@ import { styles } from "../utils/style";
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  let touches: number = 0;
 
   function handleLogin() {
     if (email === 'Gabriel@refuge.com' && password === '112233') {
@@ -16,9 +17,21 @@ export default function LoginScreen() {
     }
   }
 
+  function handleLoginPass(){
+    touches++
+    if(touches > 5){
+      router.push('/ADMIndexPage'); // Replace with your protected page
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>🔐 Login</Text>
+      <TouchableOpacity style={styles.button} onPress ={handleLoginPass}>
+       <Text style={styles.buttonText}>🔐</Text>
+     
+      </TouchableOpacity>
+
 
       <TextInput
         style={styles.input}
