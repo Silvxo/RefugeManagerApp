@@ -47,7 +47,7 @@ export default function FormularioAbrigo() {
         medicamentoContinuo: form.usoMedicamento,
         necessidadeEspecial: form.necessidadeEspecial,
         condicaoEspecial: form.condicaoEspecial,
-        dataEntrada: new Date(form.dataEntrada),
+        dataEntrada: new Date().toISOString(),
         localizacao: form.localizacaoAbrigo,
         tempoEmSituacaoDeRua: form.tempoRua,
         recebeBeneficioGOV: form.recebeBeneficio,
@@ -92,7 +92,6 @@ export default function FormularioAbrigo() {
             <TextInput placeholder="Uso de medicamento contínuo" style={styles.input} placeholderTextColor="#aaa" onChangeText={text => handleChange('usoMedicamento', text)} value={form.usoMedicamento} />
             <TextInput placeholder="Necessidade especial" style={styles.input} placeholderTextColor="#aaa" onChangeText={text => handleChange('necessidadeEspecial', text)} value={form.necessidadeEspecial} />
             <TextInput placeholder="Condição especial (cego, surdo, etc)" style={styles.input} placeholderTextColor="#aaa" onChangeText={text => handleChange('condicaoEspecial', text)} value={form.condicaoEspecial} />
-            <TextInput placeholder="Data de entrada no abrigo" style={styles.input} placeholderTextColor="#aaa" onChangeText={text => handleChange('dataEntrada', text)} value={form.dataEntrada} />
             <TextInput placeholder="Localização dentro do abrigo" style={styles.input} placeholderTextColor="#aaa" onChangeText={text => handleChange('localizacaoAbrigo', text)} value={form.localizacaoAbrigo} />
             <TextInput placeholder="Tempo em situação de rua" style={styles.input} placeholderTextColor="#aaa" onChangeText={text => handleChange('tempoRua', text)} value={form.tempoRua} />
             <TextInput placeholder="Recebe algum benefício do GOV?" style={styles.input} placeholderTextColor="#aaa" onChangeText={text => handleChange('recebeBeneficio', text)} value={form.recebeBeneficio} />
