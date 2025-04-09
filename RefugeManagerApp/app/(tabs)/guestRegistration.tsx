@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, TextInput, StyleSheet, View, Button, Alert } from 'react-native';
 import { styles } from '../utils/style'; 
+import { API_ADDRESSES } from '../utils/importantVariables';
 
 export default function FormularioAbrigo() {
     const [form, setForm] = useState({
@@ -55,7 +56,7 @@ export default function FormularioAbrigo() {
     };
 
     try {
-        const response = await fetch('http://<IP_DA_API>:3000/api/desabrigados', {
+        const response = await fetch(API_ADDRESSES.REGISTER, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
